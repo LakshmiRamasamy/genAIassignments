@@ -1,0 +1,282 @@
+{
+  "info": {
+    "_postman_id": "9963e9c2-ef57-4e71-8284-b5ab34869963",
+    "name": "Assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19467240"
+  },
+  "item": [
+    {
+      "name": "S07-Generating Accessibility From DOM-HW",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"meta-llama/llama-4-scout-17b-16e-instruct\",\n    \"temperature\": 0.1,\n\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are an Accessibility Specialist and Senior QA Architect. Your task is to analyze Accessibility DOM structures and provide WCAG 2.2 compliance observations. You must base your analysis strictly on the provided Accessibility DOM. Do not assume UI behavior or add missing elements.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"I — INSTRUCTION\\nAnalyze the provided Accessibility DOM and identify accessibility observations against WCAG 2.2 standards.\\n\\nMANDATORY RULES:\\n1) Use ONLY the given Accessibility DOM.\\n2) Do NOT assume visual styling, color contrast, or keyboard behavior unless explicitly present in the DOM,Strictly Give only the Findings no extra text or markdown.\\n3) Classify findings under WCAG Level A, AA, and AAA.\\n4) Clearly state whether each observation is Compliant, Potential Risk, or Non-Compliant.\\n5) Do NOT suggest implementation fixes.\\n\\nC — CONTEXT\\nThis analysis will be used for accessibility compliance reviews and audit preparation.\\n\\nP — PERSONA\\nYou are a Senior Accessibility Auditor with expertise in WCAG 2.2 A, AA, and AAA standards [STRICTLY] with A,AA and AAA observation in same order.\\n\\nO — OUTPUT\\nReturn observations in the following structure:\\n- WCAG_Level (A / AA / AAA)\\n- WCAG_Criterion\\n- Observation\\n- Compliance_Status (Compliant / Potential Risk / Non-Compliant)\\n- Evidence (from Accessibility DOM)\\n\\nACCESSIBILITY DOM:\\n\\nIgnored\\n  Ignored\\n    generic\\n      generic\\n        generic\\n          image\\n            url: http://leaftaps.com/opentaps_images/opentaps_logo.png\\n\\nheading \\\"Leaftaps Login\\\"\\n  StaticText \\\"Leaftaps Login\\\"\\n    InlineTextBox \\\"Leaftaps Login\\\"\\n\\nparagraph\\n  LabelText\\n    StaticText \\\"Username\\\"\\n      InlineTextBox \\\"Username\\\"\\n  textbox \\\"Username\\\"\\n    focusable: true\\n    settable: true\\n    multiline: false\\n    readonly: false\\n    required: false\\n\\nparagraph\\n  LabelText\\n    StaticText \\\"Password\\\"\\n      InlineTextBox \\\"Password\\\"\\n  textbox \\\"Password\\\"\\n    focusable: true\\n    settable: true\\n    multiline: false\\n    readonly: false\\n    required: false\\n\\nparagraph\\n  button \\\"Login\\\"\\n    focusable: true\\n    StaticText \\\"Login\\\"\\n      InlineTextBox \\\"Login\\\"\\n\\nStaticText \\\"Welcome to Leaftaps Application - TestLeaf environment for automation engineering learning.\\\"\\n  InlineTextBox \\\"Welcome to Leaftaps Application - TestLeaf environment for automation engineering learning.\\\"\"\n    }\n  ]\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.groq.com/openai/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "api",
+            "groq",
+            "com"
+          ],
+          "path": [
+            "openai",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "S08-Test Stop Generating Testcases-HW",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"meta-llama/llama-4-scout-17b-16e-instruct\",\n     \"stop\" : [\":6\"],\n  \"messages\": [\n    {\n         \"role\": \"system\",\n         \"content\": \"You are a Senior QA Analyst experienced in converting Agile user stories into high-quality, review-ready test cases.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"I — INSTRUCTION\\nConvert the provided User Stories and Acceptance Criteria into detailed, testable Test Cases.\\n\\nMANDATORY RULES:\\n1) Derive test cases ONLY from the given user stories and acceptance criteria.\\n2) Do NOT add assumptions or new requirements.\\n3) Cover positive, negative, and validation scenarios.\\n4) Write test cases from an end-user perspective.\\n5) Do NOT include implementation or technical details.\\n\\nC — CONTEXT\\nThese test cases will be used by QA teams for manual and automation testing in an enterprise healthcare application.\\n\\nP — PERSONA\\nYou are a Senior QA Analyst experienced in converting Agile user stories into high-quality, review-ready test cases.\\n\\nO — OUTPUT\\nReturn test cases in the following structured format:\\n- TC_ID:1\\n- Title\\n- Preconditions\\n- Test Steps\\n- Test Data\\n- Expected Result Type\\n Positive Negative Edge\\n\\nRules:\\n- Each test case must be clear and independent\\n- Use business-readable language only\\n- One scenario per test case\\n\\nUSER STORY:\\nAs a user, I want to record doctor activities and doctor notes so that the related functionality works as expected.\\n\\nACCEPTANCE CRITERIA:\\nGiven the system is operational,\\nWhen the user performs the intended action,\\nThen the system should respond accurately and meet functional expectations. with 10 testcases\"\n    }\n  ]\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.groq.com/openai/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "api",
+            "groq",
+            "com"
+          ],
+          "path": [
+            "openai",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "WebSearch-HW",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"groq/compound-mini\",\n  \"messages\": [\n    {\n        \"role\": \"user\",\n      \"content\": \"weather in chennai for jan 11 2026 --Only the temperatue for the date asked no probability or text and source from web with link no extrat text or markdown Give accurately with Web search no Halluciantion \"\n    }\n  ]\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.groq.com/openai/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "api",
+            "groq",
+            "com"
+          ],
+          "path": [
+            "openai",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "S17 - DOM to Selenium Code-HW",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Extract the below given DOM : \\n\\n<input type=\\\"text\\\" class=\\\"inputBox\\\" name=\\\"companyName\\\" size=\\\"30\\\" maxlength=\\\"100\\\" id=\\\"createLeadForm_companyName\\\">\\n<input type=\\\"text\\\" class=\\\"inputBox\\\" name=\\\"lastName\\\" size=\\\"30\\\" maxlength=\\\"100\\\" id=\\\"createLeadForm_lastName\\\">\\n<input type=\\\"text\\\" class=\\\"inputBox\\\" name=\\\"firstName\\\" size=\\\"30\\\" maxlength=\\\"100\\\" id=\\\"createLeadForm_firstName\\\">\\n<input type=\\\"submit\\\" class=\\\"smallSubmit\\\" name=\\\"submitButton\\\" value=\\\"Create Lead\\\" id=\\\"ext-gen630\\\"> and provide me the selenium java code. Instructions: Do not use ID if the value has number in it. Provide only java code and no explanations needed\"\n    }\n  ],\n  \"model\": \"meta-llama/llama-4-scout-17b-16e-instruct\",\n  \"temperature\": 0.1,\n  \"include_reasoning\":true\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.groq.com/openai/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "api",
+            "groq",
+            "com"
+          ],
+          "path": [
+            "openai",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "S14 -Top_p-Testcase Generation-HW",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var template = `",
+              "<canvas id=\"tokenChart\" height=\"75\"></canvas>",
+              "<canvas id=\"timeChart\" height=\"75\" style=\"margin-top: 30px;\"></canvas>",
+              "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js\"></script>",
+              "<script>",
+              "    // Token Usage Chart",
+              "    var tokenCtx = document.getElementById(\"tokenChart\");",
+              "    var tokenChart = new Chart(tokenCtx, {",
+              "        type: \"bar\",",
+              "        data: {",
+              "            labels: [\"Prompt Tokens\", \"Completion Tokens\", \"Total Tokens\"],",
+              "            datasets: [{",
+              "                label: \"Token Count\",",
+              "                backgroundColor: [\"#36a2eb\", \"#ff6384\", \"#4bc0c0\"],",
+              "                data: []",
+              "            }]",
+              "        },",
+              "        options: {",
+              "            legend: { display: true },",
+              "            title: {",
+              "                display: true,",
+              "                text: \"Token Usage Metrics\"",
+              "            },",
+              "            scales: {",
+              "                yAxes: [{",
+              "                    display: true,",
+              "                    scaleLabel: {",
+              "                        display: true,",
+              "                        labelString: \"Tokens\"",
+              "                    },",
+              "                    ticks: {",
+              "                        beginAtZero: true",
+              "                    }",
+              "                }]",
+              "            }",
+              "        }",
+              "    });",
+              "",
+              "    // Time Metrics Chart",
+              "    var timeCtx = document.getElementById(\"timeChart\");",
+              "    var timeChart = new Chart(timeCtx, {",
+              "        type: \"bar\",",
+              "        data: {",
+              "            labels: [\"Queue Time\", \"Prompt Time\", \"Completion Time\", \"Total Time\"],",
+              "            datasets: [{",
+              "                label: \"Time (ms)\",",
+              "                backgroundColor: [\"#ffce56\", \"#9966ff\", \"#ff9f40\", \"#c9cbcf\"],",
+              "                data: []",
+              "            }]",
+              "        },",
+              "        options: {",
+              "            legend: { display: true },",
+              "            title: {",
+              "                display: true,",
+              "                text: \"Time Metrics (milliseconds)\"",
+              "            },",
+              "            scales: {",
+              "                yAxes: [{",
+              "                    display: true,",
+              "                    scaleLabel: {",
+              "                        display: true,",
+              "                        labelString: \"Milliseconds\"",
+              "                    },",
+              "                    ticks: {",
+              "                        beginAtZero: true",
+              "                    }",
+              "                }]",
+              "            }",
+              "        }",
+              "    });",
+              "",
+              "    // Populate charts with data",
+              "    pm.getData(function (err, value) {",
+              "        var usage = value.response.usage || {};",
+              "        ",
+              "        // Token data (default to 0 if missing)",
+              "        var promptTokens = usage.prompt_tokens || 0;",
+              "        var completionTokens = usage.completion_tokens || 0;",
+              "        var totalTokens = usage.total_tokens || 0;",
+              "        ",
+              "        tokenChart.data.datasets[0].data = [promptTokens, completionTokens, totalTokens];",
+              "        tokenChart.update();",
+              "        ",
+              "        // Time data (convert seconds to milliseconds, default to 0 if missing)",
+              "        var queueTime = (usage.queue_time || 0) * 1000;",
+              "        var promptTime = (usage.prompt_time || 0) * 1000;",
+              "        var completionTime = (usage.completion_time || 0) * 1000;",
+              "        var totalTime = (usage.total_time || 0) * 1000;",
+              "        ",
+              "        timeChart.data.datasets[0].data = [queueTime, promptTime, completionTime, totalTime];",
+              "        timeChart.update();",
+              "    });",
+              "</script>",
+              "`;",
+              "",
+              "function constructVisualizerPayload() {",
+              "    return { response: pm.response.json() };",
+              "}",
+              "",
+              "pm.visualizer.set(template, constructVisualizerPayload());"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"meta-llama/llama-4-scout-17b-16e-instruct\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a highly structured QA assistant. Follow instructions exactly. Do not add assumptions. Do not change order. Do not vary wording unnecessarily.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Generate exactly 10 functional test cases for a healthcare application focusing only on the Inpatient Registration module. Each test case must be one concise sentence. Cover only registration-related scenarios such as patient details capture, validation, admission type, insurance details, and confirmation. Do not include discharge, billing, or clinical workflows. Output only the test case titles as a numbered list from 1 to 10. Keep the same order every time.\"\n    }\n  ],\n  \"top_p\": 0.4\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://api.groq.com/openai/v1/chat/completions",
+          "protocol": "https",
+          "host": [
+            "api",
+            "groq",
+            "com"
+          ],
+          "path": [
+            "openai",
+            "v1",
+            "chat",
+            "completions"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
